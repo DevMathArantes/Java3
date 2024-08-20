@@ -27,9 +27,28 @@ https://docs.oracle.com/en/java/
 https://docs.oracle.com/en/java/javase/19/docs/api/index.html
 https://docs.oracle.com/en/java/javase/17/docs/api/index.html
 
+ArrayList
+
+    importe a classe ArrayList
+
+    - Declarando a lista:
+    ArrayList<CLASSE> NOME_LISTA = new ArrayList<>();
+
+    - Adicionando objetos
+    NOME_LISTA.add(NOME_OBJETO);
+
+    - Número de elementos dentro de uma lista
+    NOME_LISTA.size();
+
+    - Encontrando elementos
+    NOME_LISTA.get(x).y;
+    x= posição do item, a partir de 0
+    y= atributo ou getter do objeto;
+
 */
 import PacoteClasses.PrimeiraClasse;
 import PacoteClasses.SegundaClasse;
+import java.util.ArrayList;
 
 public class Principal {
     public static void main(String[] args) {
@@ -52,5 +71,10 @@ public class Principal {
         outroObjeto.verificaAcesso();
         outroObjeto.metodoReescrito();
         System.out.println(outroObjeto.descobrirClasse(outroObjeto));
+
+        ArrayList<PrimeiraClasse> minhaLista = new ArrayList<>();
+        minhaLista.add(meuObjeto);
+        System.out.println("Elementos dentro do ArrayList: "+minhaLista.size());
+
     }
 }

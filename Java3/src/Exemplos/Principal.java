@@ -3,6 +3,7 @@ package Exemplos;
 import Exemplos.Classes.Gato;
 import Exemplos.Classes.Cachorro;
 import Exemplos.Outros.Tutor;
+import java.util.ArrayList;
 
 public class Principal {
     public static void main(String[] args) {
@@ -47,5 +48,14 @@ public class Principal {
         salsicha.contarPet(scooby.getNome());
         salsicha.contarPet(tom.getNome());
         salsicha.mostrarMeusPets();
+
+        ArrayList<Cachorro> meusCachorros = new ArrayList<>();
+        meusCachorros.add(caramelo);
+        meusCachorros.add(scooby);
+        System.out.println("\nListagem dos cachorros: ");
+        for(int i = 0;i < meusCachorros.size();i++){
+            System.out.println(meusCachorros.get(i).getNome());
+        }
+
     }
 }
