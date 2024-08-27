@@ -1,3 +1,5 @@
+
+
 package Exemplos.Classes;
 
 import Exemplos.Outros.Pertences;
@@ -42,4 +44,6 @@ public class Cachorro extends Animal implements Pertences{
     public String getBrinquedo() {
         return "EU TENHO: "+brinquedo;
     }
+
+
 }

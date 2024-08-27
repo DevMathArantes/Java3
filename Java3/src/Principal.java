@@ -77,6 +77,7 @@ Método toString
 */
 import PacoteClasses.PrimeiraClasse;
 import PacoteClasses.SegundaClasse;
+import PacoteClasses.TerceiraClasse;
 import java.util.ArrayList;
 
 public class Principal {
@@ -113,6 +114,8 @@ public class Principal {
         }
 
         System.out.println(minhaLista);
+
+        TerceiraClasse construirObjeto = new TerceiraClasse("Contruindo objeto", 01);
 
     }
 }
