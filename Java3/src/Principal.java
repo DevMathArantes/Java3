@@ -1,4 +1,11 @@
 /*
+
+Link documentação arrays
+https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html
+
+Link Java Doc
+https://www.oracle.com/java/technologies/javase/javadoc-tool.html
+
 Criando um objeto
 requisitos: tenha uma classe criada
 X NOME_OBJETO = new X();
@@ -44,6 +51,28 @@ ArrayList
     NOME_LISTA.get(x).y;
     x= posição do item, a partir de 0
     y= atributo ou getter do objeto;
+    utilize a função (...).toString para retornar local text
+
+Atribuição VAR
+
+    Durante a declaração de uma variável, pode ser atribuída com VAR NOME = X, aonde
+    a variável será do tipo do valor X
+
+    É obrigatório declarar um valor a váriavel junto a sua declaração
+
+Declarar Array
+
+    Sintaxe: TIPO[] NOME = new TIPO[X]
+    X= tamanho do array
+
+    TIPO = tipo de dados do array
+
+    obs: arrays possuem tamanho fixo e não possuem funções
+
+Método toString
+
+    Ele retorna o local text de um objeto, todos os objetos possuem essa função, ela pode ser sobreescrita e portanto,
+    criando uma função nova disponivel a todos os objetos
 
 */
 import PacoteClasses.PrimeiraClasse;
@@ -52,6 +81,8 @@ import java.util.ArrayList;
 
 public class Principal {
     public static void main(String[] args) {
+
+        int[] meuArray = new int[5];
 
         PrimeiraClasse meuObjeto = new PrimeiraClasse();
         meuObjeto.setExemploString("Primeiro objeto");
@@ -75,6 +106,13 @@ public class Principal {
         ArrayList<PrimeiraClasse> minhaLista = new ArrayList<>();
         minhaLista.add(meuObjeto);
         System.out.println("Elementos dentro do ArrayList: "+minhaLista.size());
+
+        for (int i = 0; i < 5; i++) {
+            meuArray[i]=i*5;
+            System.out.println("Elemento "+i+" do array prenchido com: "+meuArray[i]);
+        }
+
+        System.out.println(minhaLista);
 
     }
 }

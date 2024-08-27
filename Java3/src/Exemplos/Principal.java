@@ -54,7 +54,7 @@ public class Principal {
         meusCachorros.add(scooby);
         System.out.println("\nListagem dos cachorros: ");
         for(int i = 0;i < meusCachorros.size();i++){
-            System.out.println(meusCachorros.get(i).getNome());
+            System.out.println(meusCachorros.get(i).getNome()+", toString= "+meusCachorros.get(i).toString());
         }
 
     }
