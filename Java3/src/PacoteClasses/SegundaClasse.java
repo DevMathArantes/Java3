@@ -7,6 +7,10 @@ public class SegundaClasse extends ClassePai implements PrimeiraInterface {
     private double exemploDouble;
     private int valorSecreto = 6457;
 
+    public SegundaClasse(int valorExigido) {
+        super(valorExigido);
+    }
+
     public void setExemploBoolean(boolean exemploBoolean) {
         this.exemploBoolean = exemploBoolean;
     }

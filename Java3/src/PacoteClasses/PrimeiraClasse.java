@@ -78,6 +78,10 @@ public class PrimeiraClasse extends ClassePai {
     private String exemploString;
     private int exemploInt;
 
+    public PrimeiraClasse(int valorExigido) {
+        super(valorExigido);
+    }
+
     public void setExemploString(String exemploString) {
         this.exemploString = exemploString;
     }
@@ -87,6 +91,9 @@ public class PrimeiraClasse extends ClassePai {
     public void receberParametro( String parametro){
         exemploString += parametro;
         System.out.println(exemploString);
+    }
+    public String getExemploString() {
+        return exemploString;
     }
 
     @Override

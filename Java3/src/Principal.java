@@ -39,6 +39,9 @@ ArrayList
     importe a classe ArrayList
 
     - Declarando a lista:
+    ArrayList<TIPO> NOME_LISTA = new ArrayList<>();
+
+    - Declarando a lista para objetos:
     ArrayList<CLASSE> NOME_LISTA = new ArrayList<>();
 
     - Adicionando objetos
@@ -74,34 +77,90 @@ Método toString
     Ele retorna o local text de um objeto, todos os objetos possuem essa função, ela pode ser sobreescrita e portanto,
     criando uma função nova disponivel a todos os objetos
 
+Percorrendo itens de uma lista
+
+    for(CLASSE X : LISTA){
+        ...INSTRUÇÕES...
+    }
+
+    - X deve ser nomeado, ele é um parâmetro de exemplo do elemento da classe
+
+    - Este for irá percorrer os elementos de uma classe dentro da lista, caso seja uma classe pai e deseje usar um método
+    da classe filha, precisa tranformar X em um elemento da classe filha através de:
+
+        CLASSE_FILHA Y = (CLASSE_FILHA) X;
+
+    - A verificação de uma classe pode ser feita da seguinte forma:
+
+        if(X instanceof CLASSE Y){
+                ...INTRUÇÕES...
+        }
+
+        Obs: repare que a mudança do tipo de X e consequentemente a criação de Y, já é feita dentro dos parâmetros do
+        for
+
+    - O mesmo processo pode ser feito por:
+
+        LISTA.forEach(X -> ...INSTRUÇÕES...);
+
+Importante lembrar:
+
+    Um objeto só é criado através de um new, fora disso estamos apenas referenciando um objeto, veja o exemplo:
+
+        ...CRIAÇÃO DE UM OBJETO CHAMADO "Ob1" DA CLASSE "Cl1"...
+        Ob2 = Ob1;
+
+        Neste exemplo estamos criando outra referência do mesmo objeto, ou seja, tudo que alterar-mos em Ob2 será
+        alterado em Ob1, poís são referências de um mesmo objeto
+
+Ordenando listas
+
+    - importe a classe Collections
+
+    - Utilize:
+    Collections.sort(LISTA);
+
+    - Após este comando, LISTA estará ordenada
+
+    -Para ordenar objetos por um parâmetro int:
+
+         LISTA.sort(Comparator.comparing(CLASSE::ATRIBUTO));
+
+         LISTA será ordenada por ATRIBUTO de objetos da CLASSE
 */
+
+import PacoteClasses.ClassePai;
 import PacoteClasses.PrimeiraClasse;
 import PacoteClasses.SegundaClasse;
-import PacoteClasses.TerceiraClasse;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Principal {
     public static void main(String[] args) {
 
         int[] meuArray = new int[5];
 
-        PrimeiraClasse meuObjeto = new PrimeiraClasse();
+        PrimeiraClasse meuObjeto = new PrimeiraClasse(1);
         meuObjeto.setExemploString("Primeiro objeto");
         meuObjeto.setExemploInt(100);
         meuObjeto.setIntHerdado(20);
         meuObjeto.setStringHerdado("Herança aqui");
         meuObjeto.receberParametro("\n-----Nova frase aqui-----\n");
         meuObjeto.metodoReescrito();
+        meuObjeto.setOrdem("abc");
         System.out.println(meuObjeto.descobrirClasse(meuObjeto));
         meuObjeto.mostrarProtegida();
 
-        SegundaClasse outroObjeto = new SegundaClasse();
+        SegundaClasse outroObjeto = new SegundaClasse(2);
         outroObjeto.setExemploBoolean(true);
         outroObjeto.setExemploDouble(1.3);
-        outroObjeto.setIntHerdado(15);
+        outroObjeto.setIntHerdado(25);
         outroObjeto.setStringHerdado("Segundo objeto");
         outroObjeto.verificaAcesso();
         outroObjeto.metodoReescrito();
+        outroObjeto.setOrdem("aab");
         System.out.println(outroObjeto.descobrirClasse(outroObjeto));
 
         ArrayList<PrimeiraClasse> minhaLista = new ArrayList<>();
@@ -115,7 +174,41 @@ public class Principal {
 
         System.out.println(minhaLista);
 
-        TerceiraClasse construirObjeto = new TerceiraClasse("Contruindo objeto", 01);
+        ArrayList<ClassePai> listaUniversal = new ArrayList<>();
+        listaUniversal.add(meuObjeto);
+        listaUniversal.add(outroObjeto);
+
+        listaUniversal.forEach(item-> System.out.println("----\n"+item.getStringHerdado()+"\n----")
+        );
+
+        for(ClassePai item : listaUniversal){
+            System.out.println("----");
+            if(item instanceof PrimeiraClasse itemPrimeiraClasse){
+                System.out.println("Primeira classe: "+itemPrimeiraClasse.getExemploString());
+            }
+            else{
+                System.out.println("Segunda classe, nada a dizer...");
+            }
+            System.out.println("----");
+        }
+
+        ArrayList<String> listaStrings = new ArrayList<>();
+        listaStrings.add("Matheus");
+        listaStrings.add("Mikael");
+        listaStrings.add("Carlos");
+        System.out.println("Lista pronta: "+listaStrings);
+
+        Collections.sort(listaStrings);
+        System.out.println("Lista ordenada: "+listaStrings);
+
+        System.out.println(listaUniversal.toString());
+        Collections.sort(listaUniversal);
+        System.out.println("\n--- ORDENADO POR STRING---");
+        System.out.println(listaUniversal.toString());
+
+        System.out.println("\n---ORDENADO POR INT---");
+        listaUniversal.sort(Comparator.comparing(ClassePai::getIntHerdado));
+        System.out.println(listaUniversal.toString());
 
     }
 }
